@@ -6,9 +6,9 @@ The tas is given a target protein, generate a DNA/RNA aptamer sequence that bind
 
 Two core challenges make this hard:
 
-1. **Data scarcity** — known protein-aptamer binding pairs are rare(exp of the dataset that has ~725 positive (binding) pairs vs ~2175 negative pairs)
+1. **Data scarcity** : known protein-aptamer binding pairs are rare(exp of the dataset that has ~725 positive (binding) pairs vs ~2175 negative pairs)
 
-2. **No aptamer foundation model** — ESM2 is pretrained on proteins, 
+2. **No aptamer foundation model**: ESM2 is pretrained on proteins, 
 NucleotideTransformer on DNA/RNA. Neither was trained on protein-aptamer 
 interactions. Forcing both modalities through one model (like PepMLM does) 
 creates a vocabulary and semantic mismatch.
@@ -30,7 +30,7 @@ Nucleotide module: self-attention + cross-attention to protein representation + 
 
 ## summary on PepMLM
 
-PepMLM solves a related problem — generating peptide binders for a target protein.
+PepMLM solves a related problem on generating peptide binders for a target protein.
 
 Their approach:
 1. Format input as `[START] p1...pn [MASK]*n [END]`  
@@ -40,7 +40,7 @@ Their approach:
 3. Decode greedily or with top-k sampling
 
 Works well for peptides because ESM2 speaks amino acids fluently. 
-For DNA/RNA aptamers, this breaks — ESM2 has no understanding of nucleotide sequences.
+For DNA/RNA aptamers, this breaks , ESM2 has no understanding of nucleotide sequences.
 
 ## Proposed Approach: Dual Encoder with Cross-Attention
 
